@@ -179,13 +179,13 @@ tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see
 #     - #{uptime_s}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_status_left=' ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} |'
+tmux_conf_theme_status_left='  | | | | ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} |'
 tmux_conf_theme_status_right=' #{prefix}#{pairing}#{synchronized} #{?battery_status, #{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R | %d %b | #{username}#{root} | #{hostname}  '
 
 # status left style
-tmux_conf_theme_status_left_fg='#b5bd68,#f0c674,#f0c674'  # black, white , white
-tmux_conf_theme_status_left_bg='#1c1c1c,#5f5f87,#81a2be'  # yellow, pink, white blue
-tmux_conf_theme_status_left_attr='none,bold,none'
+tmux_conf_theme_status_left_fg='#000000,#000000,#000000,#000000,#b5bd68,#f0c674,#f0c674'  # black, white , white
+tmux_conf_theme_status_left_bg='#cc6666,#de9351,#f0c674,#b4bd68,#1c1c1c,#5f5f87,#81a2be'  # yellow, pink, white blue
+tmux_conf_theme_status_left_attr='none,none,none,none,none,bold,none'
 
 # status right style
 tmux_conf_theme_status_right_fg='#b4bd68,#f0c674,#de9351,#cc6666' #light gray, white, black
@@ -276,11 +276,16 @@ tmux_conf_copy_to_os_clipboard=true
 
 set -g default-terminal "tmux-256color"
 
+run-shell ~/gits/tmux-resurrect/resurrect.tmux 
+run-shell ~/gits/tmux-continuum/continuum.tmux 
+
 # increase history size
 set -g history-limit 10000
 
 # start with mouse mode enabled
 set -g mouse on
+
+set -g @continuum-restore 'on'
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
@@ -296,3 +301,4 @@ set -g mouse on
 
 # move status line to top
 #set -g status-position top
+
