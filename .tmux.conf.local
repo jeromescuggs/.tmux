@@ -276,8 +276,8 @@ tmux_conf_copy_to_os_clipboard=true
 
 set -g default-terminal "tmux-256color"
 
-run-shell ~/gits/tmux-resurrect/resurrect.tmux 
-run-shell ~/gits/tmux-continuum/continuum.tmux 
+run-shell ~/.tmux/tmux-resurrect/resurrect.tmux 
+run-shell ~/.tmux/tmux-continuum/continuum.tmux 
 
 # increase history size
 set -g history-limit 10000
