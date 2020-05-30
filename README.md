@@ -3,7 +3,9 @@
 
 Self-contained, pretty and versatile `.tmux.conf` configuration file.
 
-![screenshot](screen.png) 
+![screenshot](screen.png)
+
+![Screenshot](jrmux2.png)
 
 Installation
 ------------
