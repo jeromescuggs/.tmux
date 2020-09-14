@@ -31,6 +31,7 @@ echo "installing configuration..."
 sleep 1s
 cp $DIR/tmux.conf $HOME/.tmux.conf
 echo "installing tmux.conf at .tmux.conf in user home dir..."
+sleep 1s
 
 if [[ $1 == "alt" ]]; then 
     cp $DIR/.tmux.conf.alt.local $HOME/.tmux.conf.local
@@ -41,8 +42,11 @@ else
     echo "installing .tmux.conf.local in user home dir..."
     sleep 1s
 fi
+
 echo "setting up session management plugins in $(echo $DIR)..."
 cd $DIR && git submodule update --init 
 echo "tmux-resurrection and tmux-continuum have been installed."
 sleep 2s
 echo "all done! open an issue or pull request if you experience any turbulence when running this script."
+sleep 1s
+echo "to further tweak your setup, remember to edit ~/.tmux.conf.local, and not ~/.tmux.conf"
