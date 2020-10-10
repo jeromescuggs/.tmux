@@ -276,6 +276,8 @@ tmux_conf_copy_to_os_clipboard=true
 
 set -g default-terminal "tmux-256color"
 
+set -ga terminal-overrides ",*256color*:Tc"
+
 run-shell ~/.tmux/tmux-resurrect/resurrect.tmux 
 run-shell ~/.tmux/tmux-continuum/continuum.tmux 
 

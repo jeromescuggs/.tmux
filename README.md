@@ -22,6 +22,30 @@ cd .tmux && ./install.sh
 
 @[gpakosz] maintains a very thorough `README.md` file which covers a bunch of answers and troubleshooting tips. Initially this repo contained a copy of his readme with slight edits at the top, which can still be seen by viewing the `README-original.md` file. 
 
+Playing nice with vim
+---------------------
+
+Vim configs which make use of `set termguicolors` will break inside tmux, and fail to render accurate colors. 
+
+the solution is two-fold. the included `.tmux.conf.local` config includes the first part by default, which is including this line: 
+
+~~~ vim
+set -ga terminal-overrides ",*256color*:Tc"
+~~~
+
+this is fairly robust and will work nicely with `$TERM` variables such as `xterm-256color`, `screen-256color`, and `tmux-256color`. 
+
+your vimrc needs to be configured as well. in the interest of flexibility, adding this line to your vimrc will allow you to 'set-and-forget-it' - coupled with the above you will have zero issues regardless of whether or not you are using vim inside or outside of tmux, with `set termguicolors` enabled or not: 
+
+~~~ vim
+" workaround to let termguicolors play nice with tmux
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+~~~
+
 Alternate version
 -----------------
 
